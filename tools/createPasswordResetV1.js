@@ -3,7 +3,7 @@ const kue = require('kue');
 const queue = kue.createQueue();
 
 const job = queue.create('passwordreset_v1', {
-  email: 'user.one@unit.test',
+  email: 'user.one@dev.test',
   code: 'A1B2C3D4'
 }).save((err) => {
   if (err) {
