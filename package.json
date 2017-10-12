@@ -1,0 +1,27 @@
+{
+  "name": "login.dfe.notifications",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DFE-Digital/login.dfe.notifications.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DFE-Digital/login.dfe.notifications/issues"
+  },
+  "homepage": "https://github.com/DFE-Digital/login.dfe.notifications#readme",
+  "dependencies": {
+    "kue": "^0.11.6",
+    "morgan": "^1.9.0",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}

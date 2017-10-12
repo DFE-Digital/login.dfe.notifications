@@ -57,3 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
+# dev env
+.idea
+/config/
+!/config/login.dfe.nofications.dev.json
