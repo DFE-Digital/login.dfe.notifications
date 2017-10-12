@@ -1,3 +1,6 @@
+const utils = require('./../utils');
+utils.mockConfig();
+
 jest.mock('kue');
 
 describe('when running monitor', () => {

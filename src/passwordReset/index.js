@@ -1,3 +1,4 @@
+const logger = require('./../logger');
 const v1 = require('./passwordResetV1');
 
 const registerProcessors = (processorMappings) => {
@@ -5,6 +6,7 @@ const registerProcessors = (processorMappings) => {
     type: 'passwordreset_v1',
     processor: v1
   });
+  logger.info('registered passwordreset_v1 processor');
 };
 
 module.exports.registerProcessors = registerProcessors;

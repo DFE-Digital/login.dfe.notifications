@@ -1,11 +1,15 @@
+const logger = require('./../logger');
 const kue = require('kue');
 
 const process = (job, processor, done) => {
+  logger.info(`received job ${job.id} of type ${job.type}`);
   processor(job.data)
     .then(() => {
+      logger.info(`successfully processed job ${job.id}`);
       done();
     })
     .catch((err) => {
+      logger.error(`Error processing job ${job.id} - ${err.message}`);
       done(err);
     });
 };

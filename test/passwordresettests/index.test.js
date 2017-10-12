@@ -1,3 +1,6 @@
+const utils = require('./../utils');
+utils.mockConfig();
+
 const passwordReset = require('./../../src/passwordReset');
 
 describe('when registering password reset processors', () => {
