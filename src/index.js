@@ -1,12 +1,8 @@
 const Monitor = require('./monitor');
+const processorMappings = [];
 
-const monitor = new Monitor([
-  {
-    type: 'passwordreset_v1',
-    processor: (job) => {
-      console.log('passwordreset_v1 - ' + JSON.stringify(job));
-      return Promise.resolve(null);
-    }
-  }
-]);
+const passwordReset = require('./passwordReset');
+passwordReset.registerProcessors(processorMappings);
+
+const monitor = new Monitor(processorMappings);
 monitor.start();

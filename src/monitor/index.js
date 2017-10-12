@@ -21,7 +21,7 @@ class Monitor {
       queue.process(mapping.type, (job, done) => {
         process(job, mapping.processor, done);
       });
-    })
+    });
   }
 }
 
