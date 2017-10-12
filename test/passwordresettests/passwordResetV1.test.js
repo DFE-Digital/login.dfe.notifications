@@ -13,7 +13,11 @@ describe('when handling a password reset (v1)', () => {
     send = jest.fn();
 
     const email = require('./../../src/email');
-    email.send = send;
+    email.mockImplementation(() => {
+      return {
+        send: send
+      }
+    })
 
     processor = require('./../../src/passwordReset/passwordResetV1');
   });
