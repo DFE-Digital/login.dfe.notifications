@@ -1,5 +1,6 @@
 const logger = require('./../logger');
 const kue = require('kue');
+const config = require('./../config')();
 
 const process = (job, processor, done) => {
   logger.info(`received job ${job.id} of type ${job.type}`);
@@ -20,7 +21,10 @@ class Monitor {
   }
 
   start() {
-    const queue = kue.createQueue();
+    const connectionString = (config.queueStorage && config.queueStorage.connectionString) ? config.queueStorage.connectionString : 'redis://127.0.0.1:6379';
+    const queue = kue.createQueue({
+      redis: connectionString
+    });
     this.processorMapping.forEach(mapping => {
       queue.process(mapping.type, (job, done) => {
         process(job, mapping.processor, done);
