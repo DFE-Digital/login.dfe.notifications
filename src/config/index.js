@@ -12,14 +12,14 @@ const getSettingsObject = (settings) => {
 };
 
 const getSettingsFromFile = (settingsPath) => {
-  try{
+  try {
     const file = fs.readFileSync(settingsPath, 'utf8');
     try {
       return JSON.parse(file);
     } catch (e) {
       return null;
     }
-  } catch {
+  } catch (e) {
     return null;
   }
 };
