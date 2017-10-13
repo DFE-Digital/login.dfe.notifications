@@ -1,0 +1,18 @@
+{
+  "loggerSettings": {
+    "logLevel": "info",
+    "colors": {
+      "info": "red",
+      "ok": "green",
+      "error": "yellow"
+    }
+  },
+  "email": {
+    "type": "s3",
+    "params": {
+      "accessKey": "[YOUR-ACCESS-KEY]",
+      "accessSecret": "[YOUR-ACCESS-SECRET]",
+      "bucketName": "[YOUR-BUCKET-NAME]"
+    }
+  }
+}
