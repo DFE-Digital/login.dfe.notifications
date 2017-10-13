@@ -12,15 +12,16 @@ const getSettingsObject = (settings) => {
 };
 
 const getSettingsFromFile = (settingsPath) => {
-  if (fs.existsSync(settingsPath)) {
+  try{
     const file = fs.readFileSync(settingsPath, 'utf8');
     try {
       return JSON.parse(file);
     } catch (e) {
       return null;
     }
+  } catch {
+    return null;
   }
-  return null;
 };
 
 const fetchConfig = () => {
