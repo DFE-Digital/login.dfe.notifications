@@ -1,3 +1,6 @@
+const utils = require('./../utils');
+utils.mockConfig();
+
 jest.mock('./../../src/email');
 
 describe('when handling a password reset (v1)', () => {

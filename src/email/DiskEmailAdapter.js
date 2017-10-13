@@ -2,6 +2,7 @@ const EmailAdapter = require('./EmailAdapter');
 const path = require('path');
 const fs = require('fs');
 const {promisify} = require('util');
+const emailUtils = require('./utils');
 
 const ensureDirectory = async (template) => {
   let dir = path.resolve('app_data');
@@ -26,30 +27,17 @@ const makeDirectory = async (path) => {
     }
   }
 };
-const makeFileName = () => {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth().toString().padStart(2, '0');
-  const day = now.getDate().toString().padStart(2, '0');
-  const hour = now.getHours().toString().padStart(2, '0');
-  const minute = now.getMinutes().toString().padStart(2, '0');
-  const second = now.getSeconds().toString().padStart(2, '0');
-  return `${year}-${month}-${day}T${hour}-${minute}-${second}.json`;
-};
-const writeData = async (path, data) => {
+const writeData = async (path, content) => {
   const writeFile = promisify(fs.writeFile);
-  await writeFile(path, JSON.stringify(data));
+  await writeFile(path, content);
 }
 
 class DiskEmailAdapter extends EmailAdapter {
   async send(recipient, template, data) {
     const dirPath = await ensureDirectory(template);
-    const fileName = makeFileName();
-    await writeData(path.join(dirPath, fileName), {
-      recipient,
-      template,
-      data
-    });
+    const fileName = emailUtils.makeFileName();
+    const content = emailUtils.getFileContent(recipient, template, data);
+    await writeData(path.join(dirPath, fileName), content);
   }
 }
 

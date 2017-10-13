@@ -14,16 +14,19 @@ const getDefaultConfig = () => {
   };
 };
 
-module.exports.getDefaultConfig = getDefaultConfig;
-
-module.exports.mockConfig = (configData = undefined) => {
+const mockConfig = (configData = undefined) => {
   if(configData === undefined || configData === null) {
     configData = getDefaultConfig();
   }
 
   jest.mock('./../src/config');
-  const config = require('./../src/config/index');
+  const config = require('./../src/config');
   config.mockImplementation(() => {
     return configData;
   });
+};
+
+module.exports = {
+  getDefaultConfig,
+  mockConfig
 };

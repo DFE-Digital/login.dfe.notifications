@@ -80,6 +80,6 @@ describe('When sending email using DiskAdapter', () => {
     fs.writeFile = fsWriteFile;
 
     await expect(adapter.send(recipient, template, data)).rejects.toBeDefined();
-  })
+  });
 
 });

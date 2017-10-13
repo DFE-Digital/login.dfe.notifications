@@ -61,4 +61,5 @@ typings/
 .idea
 /config/
 !/config/login.dfe.nofications.dev.json
+!/config/login.dfe.nofications.dev-s3.json
 /app_data/
