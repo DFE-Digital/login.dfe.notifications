@@ -1,0 +1,16 @@
+{
+  "loggerSettings": {
+    "logLevel": "info",
+    "colors": {
+      "info": "red",
+      "ok": "green",
+      "error": "yellow"
+    }
+  },
+  "queueStorage": {
+    "connectionString": "redis://127.0.0.1:6379?db=1"
+  },
+  "email": {
+    "type": "disk"
+  }
+}

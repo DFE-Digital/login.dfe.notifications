@@ -59,7 +59,6 @@ typings/
 
 # dev env
 .idea
-/config/
-!/config/login.dfe.nofications.dev.json
-!/config/login.dfe.nofications.dev-s3.json
+/config/*
+!/config/*.dev.*
 /app_data/
