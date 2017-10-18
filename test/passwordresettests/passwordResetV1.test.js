@@ -9,7 +9,8 @@ describe('when handling a password reset (v1)', () => {
   let processor;
   const job = {
     email: 'user.one@unit.test',
-    code: '123ABC'
+    code: '123ABC',
+    clientId: 'foo1'
   };
 
   beforeEach(() => {
@@ -47,6 +48,12 @@ describe('when handling a password reset (v1)', () => {
     await processor(job);
 
     expect(send.mock.calls[0][2].code).toBe(job.code);
+  });
+
+  test('then the email data should include the job clientId', async () => {
+    await processor(job);
+
+    expect(send.mock.calls[0][2].clientId).toBe(job.clientId);
   });
 
   test('then it should bubble error if thrown by email', async() => {
