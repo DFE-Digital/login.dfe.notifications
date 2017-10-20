@@ -23,9 +23,9 @@ class Monitor {
   start() {
     const connectionString = (config.queueStorage && config.queueStorage.connectionString) ? config.queueStorage.connectionString : 'redis://127.0.0.1:6379';
     const queue = kue.createQueue({
-      redis: connectionString
+      redis: connectionString,
     });
-    this.processorMapping.forEach(mapping => {
+    this.processorMapping.forEach((mapping) => {
       queue.process(mapping.type, (job, done) => {
         process(job, mapping.processor, done);
       });

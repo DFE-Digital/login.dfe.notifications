@@ -5,12 +5,10 @@ const config = require('./../config')();
 
 const type = (config && config.email && config.email.type) ? config.email.type.toLowerCase() : 'disk';
 
-if(type === 'disk') {
+if (type === 'disk') {
   module.exports = DiskEmailAdapter;
-}
-else if(type === 's3') {
+} else if (type === 's3') {
   module.exports = S3EmailAdapter;
-}
-else {
+} else {
   throw new Error(`Unknown email type ${config.email.type}`);
 }

@@ -1,9 +1,19 @@
 const EmailAdapter = require('./EmailAdapter');
 const path = require('path');
 const fs = require('fs');
-const {promisify} = require('util');
+const { promisify } = require('util');
 const emailUtils = require('./utils');
 
+const makeDirectory = async (dirPath) => {
+  const mkdir = promisify(fs.mkdir);
+  try {
+    await mkdir(dirPath);
+  } catch (e) {
+    if (e.code !== 'EEXIST') {
+      throw e;
+    }
+  }
+};
 const ensureDirectory = async (template) => {
   let dir = path.resolve('app_data');
   await makeDirectory(dir);
@@ -16,21 +26,10 @@ const ensureDirectory = async (template) => {
 
   return dir;
 };
-const makeDirectory = async (path) => {
-  const mkdir = promisify(fs.mkdir);
-  try {
-    await mkdir(path);
-  }
-  catch (e) {
-    if(e.code !== 'EEXIST') {
-      throw e;
-    }
-  }
-};
-const writeData = async (path, content) => {
+const writeData = async (destination, content) => {
   const writeFile = promisify(fs.writeFile);
-  await writeFile(path, content);
-}
+  await writeFile(destination, content);
+};
 
 class DiskEmailAdapter extends EmailAdapter {
   async send(recipient, template, data) {
