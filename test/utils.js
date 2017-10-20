@@ -19,8 +19,8 @@ const mockConfig = (configData = undefined) => {
     configData = getDefaultConfig();
   }
 
-  jest.mock('./../src/config');
-  const config = require('../src/infrastructure/config');
+  jest.mock('./../src/infrastructure/config');
+  const config = require('./../src/infrastructure/config');
   config.mockImplementation(() => {
     return configData;
   });
