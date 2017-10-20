@@ -16,14 +16,14 @@ describe('when handling a password reset (v1)', () => {
   beforeEach(() => {
     send = jest.fn();
 
-    const email = require('../../src/infrastructure/email');
+    const email = require('./../../src/infrastructure/email');
     email.mockImplementation(() => {
       return {
         send: send
       }
     })
 
-    processor = require('../../src/app/passwordReset/passwordResetV1');
+    processor = require('./../../src/app/passwordReset/passwordResetV1');
   });
 
   test('then it should send email once', async () => {
@@ -58,7 +58,7 @@ describe('when handling a password reset (v1)', () => {
 
   test('then it should bubble error if thrown by email', async() => {
     send = jest.fn(() => Promise.reject('Unit test error'));
-    const email = require('../../src/infrastructure/email');
+    const email = require('./../../src/infrastructure/email');
     email.send = send;
 
     expect.assertions(1);
