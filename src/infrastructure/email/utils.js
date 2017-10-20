@@ -8,15 +8,15 @@ const makeFileName = () => {
   const second = now.getSeconds().toString().padStart(2, '0');
   return `${year}-${month}-${day}T${hour}-${minute}-${second}.json`;
 };
-const getFileContent = (recipient, template, data) => {
-  return JSON.stringify({
+
+const getFileContent = (recipient, template, data) =>
+  JSON.stringify({
     recipient,
     template,
-    data
+    data,
   });
-}
 
 module.exports = {
   makeFileName,
-  getFileContent
+  getFileContent,
 };

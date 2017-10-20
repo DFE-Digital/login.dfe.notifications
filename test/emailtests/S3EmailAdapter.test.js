@@ -32,7 +32,7 @@ describe('when sending an email using S3EmailAdapter', () => {
       }
     });
 
-    const S3EmailAdapter = require('./../../src/email/S3EmailAdapter');
+    const S3EmailAdapter = require('./../../src/infrastructure/email/S3EmailAdapter');
     adapter = new S3EmailAdapter();
   });
 

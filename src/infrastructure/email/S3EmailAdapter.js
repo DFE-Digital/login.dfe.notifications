@@ -10,7 +10,7 @@ class S3EmailAdapter extends EmailAdapter {
     if (config.email.params && config.email.params.accessKey && config.email.params.accessSecret) {
       aws.config.update({
         accessKeyId: config.email.params.accessKey,
-        secretAccessKey: config.email.params.accessSecret
+        secretAccessKey: config.email.params.accessSecret,
       });
     }
   }
@@ -22,19 +22,18 @@ class S3EmailAdapter extends EmailAdapter {
       const object = {
         Bucket: config.email.params.bucketName,
         Key: `notifications/email/${template}/${fileName}`,
-        Body: content
+        Body: content,
       };
 
       const s3 = new aws.S3();
       s3.putObject(object, (err) => {
-        if(err) {
+        if (err) {
           reject(err);
         } else {
           resolve();
         }
       });
     });
-
   }
 }
 
