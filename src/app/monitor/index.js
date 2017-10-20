@@ -1,6 +1,6 @@
-const logger = require('./../logger');
+const logger = require('./../../infrastructure/logger');
 const kue = require('kue');
-const config = require('./../config')();
+const config = require('./../../infrastructure/config')();
 
 const process = (job, processor, done) => {
   logger.info(`received job ${job.id} of type ${job.type}`);

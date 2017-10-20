@@ -32,7 +32,7 @@ describe('when running monitor', () => {
         processor: processor
       }
     ];
-    const Monitor = require('./../../src/monitor');
+    const Monitor = require('../../src/app/monitor');
     monitor = new Monitor(processorMapping);
   });
 

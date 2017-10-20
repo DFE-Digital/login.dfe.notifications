@@ -1,4 +1,4 @@
-const Email = require('./../email');
+const Email = require('./../../infrastructure/email');
 
 const processor = async (job) => {
   const email = new Email();

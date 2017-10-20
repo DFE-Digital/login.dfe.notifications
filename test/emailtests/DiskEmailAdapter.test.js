@@ -38,7 +38,7 @@ describe('When sending email using DiskAdapter', () => {
     fs.mkdir = fsMkdir;
     fs.writeFile = fsWriteFile;
 
-    const DiskEmailAdapter = require('./../../src/email/DiskEmailAdapter');
+    const DiskEmailAdapter = require('../../src/infrastructure/email/DiskEmailAdapter');
     adapter = new DiskEmailAdapter();
   });
 

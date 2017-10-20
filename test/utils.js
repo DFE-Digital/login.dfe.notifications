@@ -20,7 +20,7 @@ const mockConfig = (configData = undefined) => {
   }
 
   jest.mock('./../src/config');
-  const config = require('./../src/config');
+  const config = require('../src/infrastructure/config');
   config.mockImplementation(() => {
     return configData;
   });

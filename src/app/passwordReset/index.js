@@ -1,4 +1,4 @@
-const logger = require('./../logger');
+const logger = require('./../../infrastructure/logger');
 const v1 = require('./passwordResetV1');
 
 const registerProcessors = (processorMappings) => {

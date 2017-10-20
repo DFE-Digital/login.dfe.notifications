@@ -1,6 +1,6 @@
-const logger = require('./logger');
-const Monitor = require('./monitor');
-const passwordReset = require('./passwordReset');
+const logger = require('./infrastructure/logger');
+const Monitor = require('./app/monitor');
+const passwordReset = require('./app/passwordReset');
 
 const processorMappings = [];
 passwordReset.registerProcessors(processorMappings);
