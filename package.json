@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.x.x"
+  },
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "dev": "settings='./config/login.dfe.nofications.dev.json' node src/index.js",
