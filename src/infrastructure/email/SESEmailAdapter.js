@@ -34,7 +34,7 @@ class SESEmailAdapter extends EmailAdapter {
     aws.config.update(awsConfig);
   }
 
-  async send(recipient, template, data) {
+  async send(recipient, template, data, subject) {
     const contentTypes = await emailUtils.renderEmailContent(template, data);
 
     return new Promise((resolve, reject) => {
@@ -51,8 +51,8 @@ class SESEmailAdapter extends EmailAdapter {
         },
         Message: {
           Subject: {
-            'Data': 'Test email sent using the AWS SES',
-            'Charset': 'UTF-8'
+            Data: subject,
+            Charset: 'UTF-8'
           },
           Body: body
         }
