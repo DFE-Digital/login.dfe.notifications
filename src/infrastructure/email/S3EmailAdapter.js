@@ -15,10 +15,10 @@ class S3EmailAdapter extends EmailAdapter {
     }
   }
 
-  async send(recipient, template, data) {
+  async send(recipient, template, data, subject) {
     return new Promise((resolve, reject) => {
       const fileName = emailUtils.makeFileName();
-      const content = emailUtils.getFileContent(recipient, template, data);
+      const content = emailUtils.getFileContent(recipient, template, data, subject);
       const object = {
         Bucket: config.email.params.bucketName,
         Key: `notifications/email/${template}/${fileName}`,

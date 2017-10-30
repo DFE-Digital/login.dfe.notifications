@@ -1,4 +1,4 @@
-const utils = require('./../utils');
+const utils = require('../../utils');
 const configData = utils.getDefaultConfig();
 configData.email.type = 's3';
 configData.email.params = {
@@ -32,7 +32,7 @@ describe('when sending an email using S3EmailAdapter', () => {
       }
     });
 
-    const S3EmailAdapter = require('./../../src/infrastructure/email/S3EmailAdapter');
+    const S3EmailAdapter = require('../../../src/infrastructure/email/S3EmailAdapter');
     adapter = new S3EmailAdapter();
   });
 

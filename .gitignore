@@ -61,4 +61,4 @@ typings/
 .idea
 /config/*
 !/config/*.dev.*
-/app_data/
+/app_data/email

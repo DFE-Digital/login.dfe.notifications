@@ -32,10 +32,10 @@ const writeData = async (destination, content) => {
 };
 
 class DiskEmailAdapter extends EmailAdapter {
-  async send(recipient, template, data) {
+  async send(recipient, template, data, subject) {
     const dirPath = await ensureDirectory(template);
     const fileName = emailUtils.makeFileName();
-    const content = emailUtils.getFileContent(recipient, template, data);
+    const content = emailUtils.getFileContent(recipient, template, data, subject);
     await writeData(path.join(dirPath, fileName), content);
   }
 }

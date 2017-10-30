@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "8.x.x"
+  },
   "scripts": {
     "test": "./node_modules/.bin/jest",
-    "dev": "settings='./config/login.dfe.nofications.dev.json' node src/index.js"
+    "dev": "settings='./config/login.dfe.nofications.dev.json' node src/index.js",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +23,7 @@
   "homepage": "https://github.com/DFE-Digital/login.dfe.notifications#readme",
   "dependencies": {
     "aws-sdk": "^2.132.0",
+    "ejs": "^2.5.7",
     "kue": "^0.11.6",
     "morgan": "^1.9.0",
     "winston": "^2.4.0"
