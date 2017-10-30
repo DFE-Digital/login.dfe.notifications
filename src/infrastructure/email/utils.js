@@ -11,11 +11,12 @@ const makeFileName = () => {
   return `${year}-${month}-${day}T${hour}-${minute}-${second}.json`;
 };
 
-const getFileContent = (recipient, template, data) =>
+const getFileContent = (recipient, template, data, subject) =>
   JSON.stringify({
     recipient,
     template,
     data,
+    subject
   });
 
 const renderEmailContent = async (template, data) => {
