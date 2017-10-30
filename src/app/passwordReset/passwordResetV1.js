@@ -5,7 +5,7 @@ const processor = async (job) => {
   await email.send(job.email, 'password-reset', {
     code: job.code,
     clientId: job.clientId,
-  });
+  }, 'Password reset');
 };
 
 module.exports = processor;
