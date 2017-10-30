@@ -1,3 +1,5 @@
+const { getTemplateFormats } = require('./../templates');
+
 const makeFileName = () => {
   const now = new Date();
   const year = now.getFullYear();
@@ -16,7 +18,23 @@ const getFileContent = (recipient, template, data) =>
     data,
   });
 
+const renderEmailContent = async (template, data) => {
+  const templateFormats = await getTemplateFormats(template);
+  const emailTemplate = templateFormats.find(item => item.type === 'email');
+  if (!emailTemplate) {
+    throw new Error('No email format supported');
+  }
+
+  return emailTemplate.contentTypes.map(contentType => {
+    return {
+      type: contentType.name,
+      content: emailTemplate.render(contentType, data),
+    };
+  });
+};
+
 module.exports = {
   makeFileName,
   getFileContent,
+  renderEmailContent,
 };

@@ -4,6 +4,18 @@ const aws = require('aws-sdk');
 const emailUtils = require('./utils');
 const logger = require('./../logger');
 
+const addContentType = (name, body, contentTypes) => {
+  const type = contentTypes.find(item => item.type.toLowerCase() === name.toLowerCase());
+  if (!type) {
+    return;
+  }
+
+  body[name] = {
+    Data: type.content,
+    Charset: 'UTF-8',
+  };
+};
+
 class SESEmailAdapter extends EmailAdapter {
   constructor() {
     super();
@@ -23,9 +35,15 @@ class SESEmailAdapter extends EmailAdapter {
   }
 
   async send(recipient, template, data) {
+    const contentTypes = await emailUtils.renderEmailContent(template, data);
+
     return new Promise((resolve, reject) => {
       var ses = new aws.SES();
-      const content = emailUtils.getFileContent(recipient, template, data);
+
+      var body = {};
+      addContentType('Html', body, contentTypes);
+      addContentType('Text', body, contentTypes);
+
       ses.sendEmail({
         Source: config.email.params.sender,
         Destination: {
@@ -36,16 +54,7 @@ class SESEmailAdapter extends EmailAdapter {
             'Data': 'Test email sent using the AWS SES',
             'Charset': 'UTF-8'
           },
-          Body: {
-            Text: {
-              Data: content,
-              Charset: 'UTF-8'
-            },
-            Html: {
-              Data: content,
-              Charset: 'UTF-8'
-            }
-          }
+          Body: body
         }
       }, (err) => {
         if (err) {
