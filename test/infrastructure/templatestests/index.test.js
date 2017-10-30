@@ -4,27 +4,12 @@ describe('when getting template formats', () => {
   let getTemplateFormats;
 
   beforeEach(() => {
+    const realPath = require.requireActual('path');
+    const testRoot = realPath.resolve(__dirname, 'fixtures');
+
     const path = require('path');
-    path.resolve = jest.fn().mockReturnValue('/Users/simon/dev/DfE/login.dfe.notifications/test/infrastructure/templatestests/fixtures');
-    path.join = jest.fn().mockImplementation((a, b, c, d, e, f) => {
-      let path = a;
-      if (b) {
-        path += `/${b}`;
-      }
-      if (c) {
-        path += `/${c}`;
-      }
-      if (d) {
-        path += `/${d}`;
-      }
-      if (e) {
-        path += `/${e}`;
-      }
-      if (f) {
-        path += `/${f}`;
-      }
-      return path;
-    });
+    path.resolve = jest.fn().mockReturnValue(testRoot);
+    path.join = realPath.join;
 
     getTemplateFormats = require('./../../../src/infrastructure/templates').getTemplateFormats;
   });
