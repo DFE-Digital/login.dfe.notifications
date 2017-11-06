@@ -7,7 +7,7 @@ const processor = async (job) => {
   await email.send(job.email, 'password-reset', {
     code: job.code,
     clientId: job.clientId,
-    returnUrl: `${config.hostingEnvironment.interactionsUrl}/${uuid()}/resetpassword/confirm`,
+    returnUrl: `${config.hostingEnvironment.interactionsUrl}/${uuid()}/resetpassword/confirm?clientid=${job.clientId}`,
   }, 'Password reset');
 };
 
