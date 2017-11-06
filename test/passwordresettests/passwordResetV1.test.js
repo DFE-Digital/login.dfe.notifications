@@ -70,7 +70,7 @@ describe('when handling a password reset (v1)', () => {
   test('then the email data should include the return url', async () => {
     await processor(job);
 
-    expect(send.mock.calls[0][2].returnUrl).toBe('https://interacations.login.dfe/some-uuid/resetpassword/confirm');
+    expect(send.mock.calls[0][2].returnUrl).toBe('https://interacations.login.dfe/some-uuid/resetpassword/confirm?clientid=foo1');
   });
 
   test('then it should bubble error if thrown by email', async() => {
