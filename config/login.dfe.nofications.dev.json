@@ -8,7 +8,8 @@
     }
   },
   "hostingEnvironment": {
-    "interactionsUrl": "https://localhost:4431"
+    "interactionsUrl": "https://localhost:4431",
+    "migrationUrl": "https://localhost:4431"
   },
   "queueStorage": {
     "connectionString": "redis://127.0.0.1:6379?db=1"
