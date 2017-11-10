@@ -1,12 +1,22 @@
-const utils = require('./../utils');
-utils.mockConfig();
 
-const invitation = require('./../../src/app/invitation');
+jest.mock('./../../src/infrastructure/config');
+
 
 describe('when registering invitation processors', () => {
   let processorMappings;
+  let config;
+  let configStub;
+  let invitation;
 
   beforeEach(() => {
+    config = require('./../../src/infrastructure/config');
+    configStub = jest.fn().mockImplementation(() => ({
+      hostingEnvironment: {
+        migrationUrl: 'asdasd'
+      },
+    }));
+    config.mockImplementation(configStub);
+    invitation = require('./../../src/app/invitation');
     processorMappings = [];
   });
 
