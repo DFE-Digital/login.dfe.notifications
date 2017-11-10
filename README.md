@@ -23,11 +23,13 @@ npm run dev
 
 ```
 node tools/createPasswordResetV1.js
+node tools/createInvitationV1.js
 ```
 
 Where createPasswordResetV1.js is the type of message to queue. Currently available messages are:
 
 * createPasswordResetV1.js - Will queue v1 password reset notification.
+* createInvitationV1.js - Will queue v1 invitation notification.
 
 
 ## Change email delivery method
