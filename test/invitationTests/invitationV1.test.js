@@ -63,16 +63,6 @@ describe('when handling an invitation (v1)', () => {
 
     expect(send.mock.calls[0][2].lastName).toBe(job.lastName);
   });
-  test('then the email data should include the serviceWelcomeMessage', async () => {
-    await processor(job);
-
-    expect(send.mock.calls[0][2].serviceWelcomeMessage).toBe(job.serviceWelcomeMessage);
-  });
-  test('then the email data should include the serviceWelcomeMessageDescription', async () => {
-    await processor(job);
-
-    expect(send.mock.calls[0][2].serviceWelcomeMessageDescription).toBe(job.serviceWelcomeMessageDescription);
-  });
   test('then the email data should include the return url', async () => {
     await processor(job);
 
