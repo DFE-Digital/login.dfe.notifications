@@ -6,7 +6,7 @@ const processor = async (job) => {
   await email.send(job.email, 'invitation', {
     firstName: job.firstName,
     lastName: job.lastName,
-    returnUrl: `${config.hostingEnvironment.migrationUrl}`,
+    returnUrl: `${config.hostingEnvironment.migrationUrl}${job.invitationId}`,
   }, `You have been invited to ${job.serviceName} using DfE Sign in`);
 };
 
