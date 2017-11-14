@@ -6,19 +6,21 @@ jest.mock('./../../src/infrastructure/email');
 
 describe('when handling an invitation (v1)', () => {
 
+  const expectedInvitationId = '1234EDC456';
   let send;
   let processor;
   const job = {
     email: 'user.one@unit.test',
     firstName: 'User',
-    lastName: 'One'
+    lastName: 'One',
+    invitationId: expectedInvitationId
   };
 
   beforeEach(() => {
     const config = require('./../../src/infrastructure/config');
     config.mockReturnValue({
       hostingEnvironment: {
-        migrationUrl: 'https://migration.test/login',
+        migrationUrl: 'https://migration.test/login/',
       },
     });
 
@@ -66,7 +68,7 @@ describe('when handling an invitation (v1)', () => {
   test('then the email data should include the return url', async () => {
     await processor(job);
 
-    expect(send.mock.calls[0][2].returnUrl).toBe('https://migration.test/login');
+    expect(send.mock.calls[0][2].returnUrl).toBe(`https://migration.test/login/${expectedInvitationId}`);
   });
 
   test('then it should bubble error if thrown by email', async() => {
