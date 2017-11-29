@@ -8,7 +8,7 @@ class TemplateFormat {
 
   render(contentType, data) {
     return ejs.render(contentType.contents, data);
-  };
+  }
 }
 
 module.exports = TemplateFormat;

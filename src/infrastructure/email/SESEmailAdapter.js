@@ -22,13 +22,13 @@ class SESEmailAdapter extends EmailAdapter {
 
     const awsConfig = {};
     if (config.email.params && config.email.params.accessKey) {
-      awsConfig['accessKeyId'] = config.email.params.accessKey;
+      awsConfig.accessKeyId = config.email.params.accessKey;
     }
     if (config.email.params && config.email.params.accessSecret) {
-      awsConfig['secretAccessKey'] = config.email.params.accessSecret;
+      awsConfig.secretAccessKey = config.email.params.accessSecret;
     }
     if (config.email.params && config.email.params.region) {
-      awsConfig['region'] = config.email.params.region;
+      awsConfig.region = config.email.params.region;
     }
 
     aws.config.update(awsConfig);
@@ -38,9 +38,9 @@ class SESEmailAdapter extends EmailAdapter {
     const contentTypes = await emailUtils.renderEmailContent(template, data);
 
     return new Promise((resolve, reject) => {
-      var ses = new aws.SES();
+      const ses = new aws.SES();
 
-      var body = {};
+      const body = {};
       addContentType('Html', body, contentTypes);
       addContentType('Text', body, contentTypes);
 
@@ -52,10 +52,10 @@ class SESEmailAdapter extends EmailAdapter {
         Message: {
           Subject: {
             Data: subject,
-            Charset: 'UTF-8'
+            Charset: 'UTF-8',
           },
-          Body: body
-        }
+          Body: body,
+        },
       }, (err) => {
         if (err) {
           logger.error(`Error sending ses email - ${JSON.stringify(err)}`);
@@ -64,7 +64,7 @@ class SESEmailAdapter extends EmailAdapter {
           logger.info(`Sent ses email to ${recipient}`);
           resolve();
         }
-      })
+      });
     });
   }
 }

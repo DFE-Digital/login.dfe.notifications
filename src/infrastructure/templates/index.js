@@ -12,14 +12,14 @@ const getFilesAndContents = async (source) => {
   const contents = await readdir(source);
   const files = await Promise.all(contents.filter(async (item) => {
     const itemPath = path.join(source, item);
-    return !(await lstat(itemPath)).isDirectory()
+    return !(await lstat(itemPath)).isDirectory();
   }));
 
   return await Promise.all(files.map(async (item) => {
     const filePath = path.join(source, item);
     return {
       name: item.substring(0, item.length - 4),
-      contents: await readFile(filePath, 'utf8')
+      contents: await readFile(filePath, 'utf8'),
     };
   }));
 };
