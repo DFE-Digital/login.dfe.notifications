@@ -16,7 +16,7 @@ const getFileContent = (recipient, template, data, subject) =>
     recipient,
     template,
     data,
-    subject
+    subject,
   });
 
 const renderEmailContent = async (template, data) => {
@@ -26,12 +26,10 @@ const renderEmailContent = async (template, data) => {
     throw new Error('No email format supported');
   }
 
-  return emailTemplate.contentTypes.map(contentType => {
-    return {
-      type: contentType.name,
-      content: emailTemplate.render(contentType, data),
-    };
-  });
+  return emailTemplate.contentTypes.map(contentType => ({
+    type: contentType.name,
+    content: emailTemplate.render(contentType, data),
+  }));
 };
 
 module.exports = {

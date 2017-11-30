@@ -4,8 +4,7 @@ const assert = require('assert');
 const config = require('./../../infrastructure/config')();
 
 const registerProcessors = (processorMappings) => {
-
-  assert(config.hostingEnvironment.migrationUrl,'Migration url must be provided for invitation emails');
+  assert(config.hostingEnvironment.migrationUrl, 'Migration url must be provided for invitation emails');
 
   processorMappings.push({
     type: 'invitation_v1',
