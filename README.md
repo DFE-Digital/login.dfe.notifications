@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/DFE-Digital/login.dfe.notifications.svg?branch=master)](https://travis-ci.org/DFE-Digital/login.dfe.notifications)
 
+[![VSTS Build Status](https://sfa-gov-uk.visualstudio.com/_apis/public/build/definitions/aa44e142-c0ac-4ace-a6b2-0d9a3f35d516/710/badge)](https://sfa-gov-uk.visualstudio.com/DfE%20New%20Secure%20Access/_build/index?definitionId=710&_a=completed)
+
 Service for processing user notifications
 
 ## Getting started
