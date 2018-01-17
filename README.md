@@ -1,3 +1,5 @@
+# THIS PROJECT HAS BEEN ARCHIVED AND REPLACED WITH [Notification Jobs](https://github.com/DFE-Digital/login.dfe.notifications.jobs) AND [Jobs](https://github.com/DFE-Digital/login.dfe.jobs)
+
 # login.dfe.notifications
 
 [![Build Status](https://travis-ci.org/DFE-Digital/login.dfe.notifications.svg?branch=master)](https://travis-ci.org/DFE-Digital/login.dfe.notifications)
